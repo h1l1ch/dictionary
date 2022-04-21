@@ -1,12 +1,26 @@
-import Todos from './Todos';
+// React
+import { Fragment } from 'react';
+// React Router
+import { Route, Routes, Navigate } from "react-router-dom";
+// Components
+import HomePage from "./HomePage";
+import ResultPage from './ResultPage';
+// CSS styles
 import './App.css';
 
 function App() {
+  
   return (
-    <div>
-      <Todos/>
-    </div>
+    <Fragment>
+      <Routes>
+        <Route path="/" element={<Navigate replace to="/home" />} />
+        <Route path="/home-page" element={<HomePage/>} />
+        <Route path="/result-page" element={<ResultPage/>} />
+      </Routes>
+    </Fragment>
   );
-}
+};
+
+
 
 export default App;
