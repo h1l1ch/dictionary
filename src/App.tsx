@@ -13,7 +13,7 @@ function App() {
   return (
     <Fragment>
       <Routes>
-        <Route path="/" element={<Navigate replace to="/home" />} />
+        <Route path="/" element={<Navigate replace to="/home-page" />} />
         <Route path="/home-page" element={<HomePage/>} />
         <Route path="/result-page" element={<ResultPage/>} />
       </Routes>
