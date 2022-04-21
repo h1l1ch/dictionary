@@ -1,25 +1,31 @@
 // React
 import { useRef } from 'react';
 // React Router
-import { NavLink } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 // Redux
 import { searchWord } from './store/search';
+import { useDispatch } from 'react-redux';
 
 const HomePage: React.FC = () => {
-  
+  const dispatch = useDispatch();
   const todoTextInputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const searchHandler = (event: React.FormEvent) => {
     event.preventDefault();
-
+    
+    console.log('fired search handler')
+    
     const enteredWord = todoTextInputRef.current!.value;
-
+    
     if (enteredWord.trim().length === 0) {
       // throw an error
+      console.log(`input field cannot be empty`)
       return;
     };
-
-    searchWord(enteredWord);
+    
+    dispatch(searchWord(enteredWord));
+    navigate('/result-page');
   };
 
 
@@ -29,9 +35,7 @@ const HomePage: React.FC = () => {
             <label htmlFor='text'>search the word</label>
             <input type='text' id='text' ref={todoTextInputRef}/>
           </div>
-          <NavLink to="/result-page">
-            <button>Login</button>
-          </NavLink>
+            <button>Search</button>
         </form>
     )
 }

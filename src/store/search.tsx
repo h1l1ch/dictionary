@@ -30,6 +30,7 @@ const searchSlice = createSlice({
 });
 
 export const searchWord = (wordInfoJson: string) => {
+  console.log('fired dispatch')
   return async (dispatch: any) => {
 
     const fetchData = async () => {
@@ -38,15 +39,16 @@ export const searchWord = (wordInfoJson: string) => {
       );
 
       if (!response.ok) {
-        throw new Error('Could not fetch cart data!');
+        throw new Error('Could not fetch word data!');
       }
 
       const data = await response.json();
 
       return data;
     };
-
+    
     try {
+      console.log(`fired try and catch method`);
       const wordData = await fetchData();
       dispatch(
         searchSlice.actions.getWordSuccess({

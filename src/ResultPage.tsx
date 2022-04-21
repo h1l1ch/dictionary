@@ -1,6 +1,7 @@
 // React
 import { Fragment } from 'react'
-
+// React Router
+import { NavLink } from "react-router-dom";
 // Redux
 import { useSelector } from 'react-redux';
 import { searchActions } from './store/search';
@@ -29,6 +30,9 @@ const ResultPage: React.FC = () => {
             <h3>verb:</h3>
             <p>definition: say or shout ‘hello’.</p>
             <p>example: I pressed the phone button and helloed</p>
+            <NavLink to="/home-page">
+                <button>try another word</button>
+            </NavLink>
         </Fragment>
     )
 }
