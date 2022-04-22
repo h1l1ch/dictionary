@@ -6,17 +6,17 @@ import { useNavigate  } from "react-router-dom";
 import { searchWord } from './store/search';
 import { useDispatch } from 'react-redux';
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   const dispatch = useDispatch();
-  const todoTextInputRef = useRef<HTMLInputElement>(null);
+  const todoTextInputRef = useRef(null);
   const navigate = useNavigate();
 
-  const searchHandler = (event: React.FormEvent) => {
+  const searchHandler = (event) => {
     event.preventDefault();
     
     console.log('fired search handler')
     
-    const enteredWord = todoTextInputRef.current!.value;
+    const enteredWord = todoTextInputRef.current.value;
     
     if (enteredWord.trim().length === 0) {
       // throw an error

@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const instance = axios.create({
-  baseURL: 'https://api.dictionaryapi.dev/api/v2/entries/en/'
-});
+import { AnyAction, Dispatch } from 'redux';
 
 const searchSlice = createSlice({
   name: 'search',
@@ -25,13 +21,21 @@ const searchSlice = createSlice({
         title: action.payload.title,
         message: action.payload.message,
       };
+    },
+    cleanState(state) {
+      state.wordInfo = '';
+      state.notification = {
+        status: '',
+        title: '',
+        message: '',
+      }
     }
   },
 });
 
 export const searchWord = (wordInfoJson: string) => {
   console.log('fired dispatch')
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch<AnyAction>) => {
 
     const fetchData = async () => {
       const response = await fetch(
@@ -50,12 +54,14 @@ export const searchWord = (wordInfoJson: string) => {
     try {
       console.log(`fired try and catch method`);
       const wordData = await fetchData();
+      console.log(wordData);
       dispatch(
         searchSlice.actions.getWordSuccess({
           wordInfo: wordData
         })
       );
     } catch (error) {
+      console.log(error)
       dispatch(
         searchSlice.actions.getWordFail({
           status: 'error',

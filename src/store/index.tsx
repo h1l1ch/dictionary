@@ -4,7 +4,7 @@ import searchReducer from './search';
 
 
 const store = configureStore({
-  reducer: { auth: searchReducer },
+  reducer: { search: searchReducer },
 });
 
 export default store;
