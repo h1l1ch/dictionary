@@ -1,57 +1,44 @@
-.form {
-  width: 40rem;
-  margin: 2rem auto;
+.title {
+  color: white;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
-.form label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+@media (min-width: 1440px) {
+  .title {
+    font-size: 3.6rem;
+  }
 }
 
-.form input {
-  display: block;
+@media (min-width: 415px) and (max-width: 1439px) {
+  .title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .title {
+    font-size: 2.8rem;
+  }
+}
+
+.home-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #d13e3e;
   width: 100%;
-  font: inherit;
-  font-size: 1.5rem;
-  padding: 0.5rem;
-  border-radius: 4px;
-  background-color: #f7f5ef;
-  border: none;
-  border-bottom: 2px solid #494844;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-bottom: 0.5rem;
-}
-
-.form button {
-  font: inherit;
-  background-color: #ebb002;
-  border: 1px solid #ebb002;
-  color: #201d0f;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form button:hover,
-.form button:active {
-  background-color: #ebc002;
-  border-color: #ebc002;
-}
-
-.item {
-  margin: 1rem 0;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  background-color: #f7f5ef;
-}
-
-.todos {
-  list-style: none;
-  margin: 2rem auto;
-  padding: 0;
-  width: 40rem;
+  height: 100vh;
+  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 /*# sourceMappingURL=App.css.map */

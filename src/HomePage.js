@@ -5,6 +5,10 @@ import { useNavigate  } from "react-router-dom";
 // Redux
 import { searchWord } from './store/search';
 import { useDispatch } from 'react-redux';
+// React Icons
+import { FaSistrix } from 'react-icons/fa'
+// Elements
+import Title from './Title';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -30,12 +34,13 @@ const HomePage = () => {
 
 
     return (
-        <form onSubmit={searchHandler}>
-          <div >
+        <form onSubmit={searchHandler} className="home-page">
+          <Title/>
+          <div>
             <label htmlFor='text'>search the word</label>
             <input type='text' id='text' ref={todoTextInputRef}/>
+            <button><FaSistrix/></button>
           </div>
-            <button>Search</button>
         </form>
     )
 }

@@ -4,11 +4,13 @@ import { AnyAction, Dispatch } from 'redux';
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    wordInfo: '',
+    wordInfo: {
+      word: '',
+      phonetics: '',
+      meanings: '',
+    },
     notification: {
-      status: '',
-      title: '',
-      message: '',
+      message: ''
     },
   },
   reducers: {
@@ -17,24 +19,23 @@ const searchSlice = createSlice({
     },
     getWordFail(state, action) {
       state.notification = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
+        message: action.payload.message
       };
     },
     cleanState(state) {
-      state.wordInfo = '';
+      state.wordInfo = {
+        word: '',
+        phonetics: '',
+        meanings: '',
+      };
       state.notification = {
-        status: '',
-        title: '',
-        message: '',
+        message: ''
       }
     }
   },
 });
 
 export const searchWord = (wordInfoJson: string) => {
-  console.log('fired dispatch')
   return async (dispatch: Dispatch<AnyAction>) => {
 
     const fetchData = async () => {
@@ -52,21 +53,31 @@ export const searchWord = (wordInfoJson: string) => {
     };
     
     try {
-      console.log(`fired try and catch method`);
       const wordData = await fetchData();
       console.log(wordData);
       dispatch(
         searchSlice.actions.getWordSuccess({
-          wordInfo: wordData
+          wordInfo: {
+            word: wordData[0]["word"] && wordData[0]["word"],
+            phonetics: [
+              wordData[0]["phonetics"][0] && wordData[0]["phonetics"][0],
+              wordData[0]["phonetics"][1] && wordData[0]["phonetics"][1]
+            ],
+            meanings: [
+              wordData[0]["meanings"][0] && wordData[0]["meanings"][0],
+              wordData[0]["meanings"][1] && wordData[0]["meanings"][1],
+              wordData[0]["meanings"][2] && wordData[0]["meanings"][2],
+              wordData[0]["meanings"][3] && wordData[0]["meanings"][3],
+              wordData[0]["meanings"][4] && wordData[0]["meanings"][4],
+            ],
+          }
         })
       );
     } catch (error) {
       console.log(error)
       dispatch(
         searchSlice.actions.getWordFail({
-          status: 'error',
-          title: 'Error!',
-          message: 'sorry. Word not found...',
+          message: 'sorry. Word not found...'
         })
       );
     }

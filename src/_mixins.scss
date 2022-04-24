@@ -1,13 +1,3 @@
-// Imports
-@import './mixins';
-@import './variables';
-
-// UNIVERSAL COMPONENTS
-@import './Title';
-
-// HOME PAGE
-@import './HomePage';
-
 @mixin phone {
     font-size: $phone-font-size;
 
@@ -32,3 +22,13 @@
     }
 }
 
+// SET A REM FONT SIZE WITH PIXEL FALLBACK
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+  }
+  
+  @mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
