@@ -7,9 +7,9 @@ const WordElement: React.FC = () => {
     const word = useSelector((state: any) => state.search.wordInfo.word);
 
     return (
-        <Fragment>
-            <p>word: {word}</p>
-        </Fragment>
+        <div className='result-page__word-element'>
+            <p><strong>word:</strong> {word}</p>
+        </div>
     )
 }
 

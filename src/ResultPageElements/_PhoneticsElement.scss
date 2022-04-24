@@ -1,0 +1,73 @@
+.result-page__phonetics-element {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: $backgroundColor;
+
+    p {
+        display: inline-block;
+        margin: 0 10px 0 0;
+    }
+
+    button {
+        display: inline-flex;
+        align-items: center;
+        color: white;
+        background-color: $backgroundColor;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 5px;
+        box-shadow: none;
+        margin: 2px 2px 2px 0;
+
+        &:hover  {
+            cursor: pointer;
+        }
+    };
+    
+    @include desktop {
+        width: 600px;
+        
+        button {
+            font-size: $desktop-font-size * 0.7;
+            padding: $desktop-font-size * 0.15 $desktop-font-size * 0.3;
+        }
+        
+        p {
+            font-size: $desktop-font-size * 0.7;
+        }
+    }
+    
+    @include tablet {
+        width: 400px;
+
+        button {
+            font-size: $tablet-font-size * 0.7;
+            padding: $tablet-font-size * 0.15 $tablet-font-size * 0.3;
+        }
+        
+        p {
+            font-size: $tablet-font-size * 0.7;
+        }
+    }
+    
+    @include phone {    
+        width: 350px;
+
+        button {
+            font-size: $phone-font-size * 0.7;
+            padding: $phone-font-size * 0.15 $phone-font-size * 0.3;
+        }
+        
+        p {
+            font-size: $phone-font-size * 0.7;
+        }
+    }
+}

@@ -22,11 +22,11 @@ const HomePage = () => {
     
     const enteredWord = todoTextInputRef.current.value;
     
-    if (enteredWord.trim().length === 0) {
-      // throw an error
-      console.log(`input field cannot be empty`)
-      return;
-    };
+    // if (enteredWord.trim().length === 0) {
+    //   // throw an error
+    //   console.log(`input field cannot be empty`)
+    //   return;
+    // };
     
     dispatch(searchWord(enteredWord));
     navigate('/result-page');
@@ -36,10 +36,10 @@ const HomePage = () => {
     return (
         <form onSubmit={searchHandler} className="home-page">
           <Title/>
-          <div>
-            <label htmlFor='text'>search the word</label>
-            <input type='text' id='text' ref={todoTextInputRef}/>
-            <button><FaSistrix/></button>
+          <div className="search-field">
+            {/* <label htmlFor='text'>search the word</label> */}
+            <button className="search-field__button"><FaSistrix/></button>
+            <input className="search-field__input" type='text' name="search" placeholder='search the word' ref={todoTextInputRef}/>
           </div>
         </form>
     )

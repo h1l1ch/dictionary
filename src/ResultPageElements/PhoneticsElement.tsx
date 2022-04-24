@@ -13,14 +13,12 @@ const PhoneticsElement: React.FC<{index: number}> = (props) => {
     };
 
     return (
-        <Fragment>
-            {phonetics['text'] != undefined && (
-                <p>phonetics: {phonetics['text']}</p>
-            )}
+        <div className='result-page__phonetics-element'>
+            <p><strong>phonetics:</strong>{phonetics['text'] != undefined && phonetics['text']}</p>
             {phonetics['audio'] != false && (
                 <button onClick={playPhonicsAudioHandler}>play</button>
             )}
-        </Fragment>
+        </div>
     )
 }
 

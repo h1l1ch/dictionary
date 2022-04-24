@@ -1,0 +1,43 @@
+.result-page__word-element {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: $backgroundColor;
+
+    p {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        padding: 2px 2px; 
+    }
+    
+    @include desktop {
+        width: 600px;
+        
+        p {
+            font-size: $desktop-font-size * 0.7;
+        }  
+    }
+    
+    @include tablet {
+        width: 400px;
+        
+        p {
+            font-size: $tablet-font-size * 0.7;
+        }
+    }
+    
+    @include phone {    
+        width: 350px;
+
+        p {
+            font-size: $phone-font-size * 0.7;
+        }
+    }
+}

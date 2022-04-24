@@ -7,17 +7,17 @@ const MeaningsElement: React.FC<{index: number}> = (props) => {
     const meaningsElement = useSelector((state: any) => state.search.wordInfo.meanings[props.index]);
 
     return (
-        <Fragment>
+        <div className='result-page__meanings-element'>
             <p>
-                {meaningsElement['partOfSpeech']}: {meaningsElement['definitions'][0]['definition'] != false  && meaningsElement['definitions'][0]['definition']}
+                <strong>{meaningsElement['partOfSpeech']}:</strong> {meaningsElement['definitions'][0]['definition'] != false  && meaningsElement['definitions'][0]['definition']}
             </p>
             {meaningsElement['synonyms'] != false && (
-                <p>synonyms: {meaningsElement['synonyms'].join(', ')}.</p>
+                <p><strong>synonyms:</strong> {meaningsElement['synonyms'].join(', ')}.</p>
             )}
             {meaningsElement['antonyms'] != false && (
-                <p>antonyms: {meaningsElement['antonyms'].join(', ')}.</p>
+                <p><strong>antonyms:</strong> {meaningsElement['antonyms'].join(', ')}.</p>
             )}
-        </Fragment>
+        </div>
     )
 }
 

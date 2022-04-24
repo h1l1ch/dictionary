@@ -8,6 +8,13 @@
 // HOME PAGE
 @import './HomePage';
 
+// RESULT PAGE
+@import './ResultPageElements/SpinnerElement';
+@import './ResultPageElements/WordElement';
+@import './ResultPageElements/PhoneticsElement';
+@import './ResultPageElements/MeaningsElement';
+@import './ResultPage';
+
 @mixin phone {
     font-size: $phone-font-size;
 

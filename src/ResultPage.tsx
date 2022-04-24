@@ -11,6 +11,7 @@ import { searchActions } from './store/search';
 import MeaningsElement from './ResultPageElements/MeaningsElement';
 import WordElement from './ResultPageElements/WordElement';
 import PhoneticsElement from './ResultPageElements/PhoneticsElement';
+import SpinnerElement from './ResultPageElements/SpinnerElement';
 import Title from './Title';
 
 const ResultPage: React.FC = () => {
@@ -48,8 +49,11 @@ const ResultPage: React.FC = () => {
     };
 
     return (
-        <Fragment>
+        <div className='result-page'>
             <Title/>
+            {(wordInfo.word == false && error.message == false) && (
+                <SpinnerElement/>
+            )}
             {wordInfo.word && (
                 <Fragment>
                     <WordElement/>
@@ -76,15 +80,15 @@ const ResultPage: React.FC = () => {
                     )}
                 </Fragment>
             )}
-            {error.status && (
+            {error.message != false && (
                 <Fragment>
                     <h2>{error.message}</h2>
                 </Fragment>
             )}
             <NavLink to="/home-page">
-                <button onClick={cleanStateHandler}>try another word</button>
+                <button className='result-page__return-button' onClick={cleanStateHandler}><strong>try another word</strong></button>
             </NavLink>
-        </Fragment>
+        </div>
     )
 }
 
