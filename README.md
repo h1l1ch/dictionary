@@ -16,7 +16,7 @@ Use **"search"** to search the English word and find its meanings and phonetics.
   
   * **/store/** includes *"Redux"* related code.
   
-  * * **/ResultPageElements/** includes *"Result Page"* related code.
+  * **/ResultPageElements/** includes *"Result Page"* related code.
    
 * **/App.tsx** is a *head* (main) functional component. It is wrapper of all React components.
      
