@@ -4,7 +4,7 @@ Project built using React library. Multiple React features were used here: Hooks
 
 ## How to use
 
-Use **"search"** to search the English word and find its meanings and phonetics.
+Use **"search"** to search the English word and find its meanings and phonetics. One the result page you will see results and can press **"try another word"** to search for another word.
 
 ## Project structure
 
