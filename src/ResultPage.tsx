@@ -1,13 +1,8 @@
-// React
 import { Fragment } from 'react'
-// React Router
 import { NavLink } from "react-router-dom";
-// React
 import { useEffect } from 'react';
-// Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { searchActions } from './store/search';
-// Elements
+import { searchActions } from './store/search-slice';
 import MeaningsElement from './ResultPageElements/MeaningsElement';
 import WordElement from './ResultPageElements/WordElement';
 import PhoneticsElement from './ResultPageElements/PhoneticsElement';
@@ -23,27 +18,6 @@ const ResultPage: React.FC = () => {
         console.log(wordInfo.meanings);
     }, [wordInfo]);
 
-    // let meanings = wordInfo.meanings
-    //     .map((element: any, index: number) => {
-    //         return (element[0] && (
-    //             <Fragment>
-    //                 <h3>{element[index]['partOfSpeech']}:</h3>
-    //                 {element[index]['definitions'][0]['definition'] != false  && (
-    //                     <p>definition: {element[index]['definitions'][0]['definition']}</p>
-    //                 )}
-    //                 {element[index]['synonyms'] != false && (
-    //                     <p>synonyms: {element[index]['synonyms'].join(', ')}.</p>
-    //                 )}
-    //                 {wordInfo.meanings[index]['antonyms'] != false && (
-    //                     <p>antonyms: {element[index]['antonyms'].join(', ')}.</p>
-    //                 )}
-    //             </Fragment>
-    //         ))
-    //     })
-    //     .reduce((arr: any, el: any) => {
-    //         return arr.concat(el);
-    //     }, []);
-
     const cleanStateHandler = () => {
         dispatch(searchActions.cleanState());
     };
@@ -53,33 +27,18 @@ const ResultPage: React.FC = () => {
             <Title/>
             {(wordInfo.word == false && error.message == false) && (
                 <SpinnerElement/>
-            )}
-            {wordInfo.word && (
-                <Fragment>
-                    <WordElement/>
-                    {wordInfo.phonetics[0] && (
-                        <PhoneticsElement index={0}/>
-                    )}
-                    {wordInfo.phonetics[1] && (
-                        <PhoneticsElement index={1}/>
-                    )}
-                    {wordInfo.meanings[0] && (
-                        <MeaningsElement index={0}/>
-                    )}
-                    {wordInfo.meanings[1] && (
-                        <MeaningsElement index={1}/>
-                    )}
-                    {wordInfo.meanings[2] && (
-                        <MeaningsElement index={2}/>
-                    )}
-                    {wordInfo.meanings[3] && (
-                        <MeaningsElement index={3}/>
-                    )}
-                    {wordInfo.meanings[4] && (
-                        <MeaningsElement index={4}/>
-                    )}
-                </Fragment>
-            )}
+                )}
+            {wordInfo.word && <WordElement/>}
+            {wordInfo.word && wordInfo.phoneticsArray.map((element: any) => {
+                return (
+                    <PhoneticsElement key={Math.random()} phoneticsElement={element}/>
+                )})
+            }  
+            {wordInfo.word && wordInfo.meaningsArray.map((element: any) => {
+                return (
+                    <MeaningsElement key={Math.random()} meaningsElement={element}/>
+                )})
+            }
             {error.message != false && (
                 <Fragment>
                     <h2>{error.message}</h2>

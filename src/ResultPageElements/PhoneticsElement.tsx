@@ -1,21 +1,15 @@
-// React
-import { Fragment } from 'react'
-// Redux
-import { useSelector } from 'react-redux';
-
-const PhoneticsElement: React.FC<{index: number}> = (props) => {
-    const phonetics = useSelector((state: any) => state.search.wordInfo.phonetics[props.index]);
+const PhoneticsElement: React.FC<{phoneticsElement: any}> = (props) => {
 
     const playPhonicsAudioHandler = (event: any) => {
         event!.preventDefault();
-        const music = new Audio(phonetics['audio']);
+        const music = new Audio(props.phoneticsElement['audio']);
         music.play();
     };
 
     return (
         <div className='result-page__phonetics-element'>
-            <p><strong>phonetics:</strong>{phonetics['text'] != undefined && phonetics['text']}</p>
-            {phonetics['audio'] != false && (
+            <p><strong>phonetics:</strong>{props.phoneticsElement['text'] != undefined && props.phoneticsElement['text']}</p>
+            {props.phoneticsElement['audio'] != false && (
                 <button onClick={playPhonicsAudioHandler}>play</button>
             )}
         </div>

@@ -1,13 +1,8 @@
-// React
 import { useRef } from 'react';
-// React Router
 import { useNavigate  } from "react-router-dom";
-// Redux
-import { searchWord } from './store/search';
+import { searchWord } from './store/search-actions';
 import { useDispatch } from 'react-redux';
-// React Icons
 import { FaSistrix } from 'react-icons/fa'
-// Elements
 import Title from './Title';
 
 const HomePage = () => {
@@ -20,14 +15,7 @@ const HomePage = () => {
     
     console.log('fired search handler')
     
-    const enteredWord = todoTextInputRef.current.value;
-    
-    // if (enteredWord.trim().length === 0) {
-    //   // throw an error
-    //   console.log(`input field cannot be empty`)
-    //   return;
-    // };
-    
+    const enteredWord = todoTextInputRef.current.value;  
     dispatch(searchWord(enteredWord));
     navigate('/result-page');
   };

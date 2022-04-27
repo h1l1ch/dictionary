@@ -1,6 +1,3 @@
-// React
-import { Fragment } from 'react'
-// Redux
 import { useSelector } from 'react-redux';
 
 const WordElement: React.FC = () => {
