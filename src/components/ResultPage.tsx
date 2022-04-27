@@ -36,7 +36,7 @@ const ResultPage: React.FC = () => {
                         <MeaningsElement key={Math.random()} meaningsElement={element}/>
                     )
                 })}
-                {error.message !== false && (
+                {error.message !== '' && (
                     <Fragment>
                         <h2>{error.message}</h2>
                     </Fragment>
