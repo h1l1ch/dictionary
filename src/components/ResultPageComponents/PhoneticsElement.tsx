@@ -7,7 +7,7 @@ const PhoneticsElement: React.FC<{phoneticsElement: any}> = (props) => {
     };
 
     return (
-        <div className='result-page__phonetics-element'>
+        <div>
             <p><strong>phonetics:</strong>{props.phoneticsElement['text'] != undefined && props.phoneticsElement['text']}</p>
             {props.phoneticsElement['audio'] != false && (
                 <button onClick={playPhonicsAudioHandler}>play</button>

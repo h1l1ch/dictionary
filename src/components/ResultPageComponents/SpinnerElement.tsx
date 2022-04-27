@@ -1,4 +1,5 @@
 import React from 'react';
+import './SpinnerElement.css'
 
 const SpinnerElement: React.FC= () => {
 

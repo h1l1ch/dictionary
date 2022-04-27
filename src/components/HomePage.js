@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 import { useNavigate  } from "react-router-dom";
-import { searchWord } from './store/search-actions';
+import { searchWord } from '../store/search-actions';
 import { useDispatch } from 'react-redux';
 import { FaSistrix } from 'react-icons/fa'
 import Title from './Title';
+import { StyledHomePage } from './styles/HomePage.styled'
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -12,24 +13,19 @@ const HomePage = () => {
 
   const searchHandler = (event) => {
     event.preventDefault();
-    
-    console.log('fired search handler')
-    
     const enteredWord = todoTextInputRef.current.value;  
     dispatch(searchWord(enteredWord));
     navigate('/result-page');
   };
 
-
     return (
-        <form onSubmit={searchHandler} className="home-page">
+        <StyledHomePage onSubmit={searchHandler}>
           <Title/>
-          <div className="search-field">
-            {/* <label htmlFor='text'>search the word</label> */}
-            <button className="search-field__button"><FaSistrix/></button>
-            <input className="search-field__input" type='text' name="search" placeholder='search the word' ref={todoTextInputRef}/>
+          <div>
+            <button><FaSistrix/></button>
+            <input type='text' name="search" placeholder='search the word' ref={todoTextInputRef}/>
           </div>
-        </form>
+        </StyledHomePage>
     )
 }
 

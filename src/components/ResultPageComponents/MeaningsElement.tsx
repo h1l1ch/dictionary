@@ -1,7 +1,7 @@
 const MeaningsElement: React.FC<{meaningsElement: any}> = (props) => {
 
     return (
-        <div className='result-page__meanings-element'>
+        <div>
             <p>
                 <strong>{props.meaningsElement['partOfSpeech']}:</strong> {props.meaningsElement['definitions'][0]['definition'] != false  && props.meaningsElement['definitions'][0]['definition']}
             </p>
