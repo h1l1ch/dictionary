@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import { NavLink } from "react-router-dom";
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { searchActions } from '../store/search-slice';
 import MeaningsElement from './ResultPageComponents/MeaningsElement';
@@ -15,10 +14,6 @@ const ResultPage: React.FC = () => {
     const wordInfo = useSelector((state: any) => state.search.wordInfo);
     const error = useSelector((state: any) => state.search.notification);
 
-    useEffect(() => {
-        console.log(wordInfo.meanings);
-    }, [wordInfo]);
-
     const cleanStateHandler = () => {
         dispatch(searchActions.cleanState());
     };
@@ -26,7 +21,7 @@ const ResultPage: React.FC = () => {
     return (
         <StyledResultPage>
             <Title/>
-            {(wordInfo.word == false && error.message == false) && (
+            {(wordInfo.word === '' && error.message === '') && (
                 <SpinnerElement/>
             )}
             <div>
@@ -41,7 +36,7 @@ const ResultPage: React.FC = () => {
                         <MeaningsElement key={Math.random()} meaningsElement={element}/>
                     )
                 })}
-                {error.message != false && (
+                {error.message !== false && (
                     <Fragment>
                         <h2>{error.message}</h2>
                     </Fragment>

@@ -20,7 +20,6 @@ export const searchWord = (wordInfoJson: string) => {
       
       try {
         const wordData = await fetchData();
-        console.log(wordData);
         dispatch(
             searchActions.getWordSuccess({
             wordInfo: {
