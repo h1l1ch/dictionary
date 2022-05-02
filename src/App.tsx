@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import ResultPage from './components/ResultPage';
 import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './components/styles/Global';
 
 const theme = {
   mobile: '768px',
@@ -13,6 +14,7 @@ function App() {
   return (
     <Fragment>
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <Routes>
           <Route path="/" element={<Navigate replace to="/home-page" />} />
           <Route path="/home-page" element={<HomePage/>} />
